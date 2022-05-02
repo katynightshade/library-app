@@ -11,25 +11,19 @@
 <body>
     <h1>My Local Library</h1>
 
-    <div class="library-list">
-        <h3>Library List</h3>
-        <table>
-            <thead>
-                <td></td>
-                <td>Title</td>
-                <td>Author</td>
-                <td>Pages</td>
-                <td>Read/Unread</td>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
+    <div id="new-btndiv">
+        <button id="new-btn">New Book</button>
     </div>
 
-    <div class="add-books">
-        <h3>Add New Book</h3>
-        <form action=".library-list" method="post">
+    <div class="library-div">
+        <h3>Library List</h3>
+        
+    </div>
+
+    <div id="pop-up">
+        <form action=".library-div" method="post">
+            <span class="close">&times;</span>
+            <h3>Add New Book</h3>
             <label for="title">Title</label>
             <input type="text" id="title" name="title">
             <label for="author">Author</label>
@@ -40,7 +34,7 @@
             <label for="read">Read</label>
             <input type="radio" id="unread" name="unread">
             <label for="unread">Not Read</label>
-            <button type="submit">Submit</button>
+            <button type="submit" id="add-btn">Submit</button>
         </form>
     </div>
 
