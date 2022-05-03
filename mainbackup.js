@@ -1,14 +1,15 @@
+/*Still having issues with getting added books to display, not sure what the problem is at this point */
+
+let myLibrary = [];
+
 const addBtn = document.getElementById('add-btn');
 addBtn.addEventListener('click', addBooks());
 
 const newBookBtn = document.getElementById('new-btn');
-const libraryDiv = document.querySelector('.library-div');
-const title = document.getElementById('formtitle');
+/*const title = document.getElementById('formtitle');
 const author = document.getElementById('formauthor');
 const pages = document.getElementById('formpages');
-const read = document.getElementById('formread');
-
-let myLibrary = [];
+const read = document.getElementById('formread');*/
 
 function Books(title, author, pages, read) {
     this.title = title;
@@ -17,7 +18,7 @@ function Books(title, author, pages, read) {
     this.read = read;
 }
 
-function addBooks() {
+function addBooks(title, author, pages, read) {
     let newBook = new Books(title, author, pages, read);
     myLibrary.push(newBook);
     render();
@@ -30,6 +31,7 @@ function render() {
 }
 
 function createBook(item) {
+    const libraryDiv = document.getElementById('library-div');
     const bookDiv = document.createElement('div');
     const titleDiv = document.createElement('div');
     const authorDiv = document.createElement('div');
@@ -63,6 +65,8 @@ function createBook(item) {
     removeBtn.setAttribute('id', 'removeBtn');
     bookDiv.appendChild(removeBtn);
 
+    libraryDiv.appendChild(bookDiv);
+
     removeBtn.addEventListener('click', () => {
         myLibrary.splice(myLibrary.indexOf(item), 1);
         render();
@@ -73,3 +77,21 @@ function createBook(item) {
         render();
     });
 }
+
+function validateForm(event) {
+    const form = document.getElementById('book-form');
+    const title = document.getElementById('formtitle');
+    const author = document.getElementById('formauthor');
+    const pages = document.getElementById('formpages');
+    const read = document.getElementById('formread');
+    if (title.value !== '' && author.value !== '' && pages.value !== '') {
+        if (read.checked) {
+            addBooks(title.value, author.value, pages.value, true);
+        } else {
+            addBooks(title.value, author.value, pages.value, false);
+        };
+    };
+    form.reset();
+}
+
+validateForm();
