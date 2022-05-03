@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/book-icon.png">
     <link rel="stylesheet" href="css/style.css">
@@ -15,13 +14,8 @@
         <button id="new-btn">New Book</button>
     </div>
 
-    <div class="library-div">
-        <h3>Library List</h3>
-        
-    </div>
-
     <div id="pop-up">
-        <form action=".library-div" method="post">
+        <form action="/main.js" id="book-form">
             <span class="close">&times;</span>
             <h3>Add New Book</h3>
             <label for="title">Title</label>
@@ -30,12 +24,15 @@
             <input type="text" id="author" name="author">
             <label for="pages">Number of Pages</label>
             <input type="text" id="pages" name="pages">
-            <input type="radio" id="read" name="read">
-            <label for="read">Read</label>
-            <input type="radio" id="unread" name="unread">
-            <label for="unread">Not Read</label>
+            <input type='checkbox' id='read' name='read' value='yes'>
+            <label>Read:</label>
             <button type="submit" id="add-btn">Submit</button>
         </form>
+    </div>
+
+    <div class="library-div">
+        <h3>Library List</h3>
+
     </div>
 
     <script src="main.js"></script>

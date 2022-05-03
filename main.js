@@ -3,6 +3,11 @@ const addBtn = document.getElementById('add-btn');
 const newBookBtn = document.getElementById('new-btn');
 const libraryDiv = document.querySelector('.library-div');
 const closeBtn = document.querySelector('.close');
+const bookForm = document.getElementById('book-form');
+const bookTitle = document.getElementById('title');
+const bookAuthor = document.getElementById('author');
+const bookPages = document.getElementById('pages');
+const bookRead = document.getElementById('read');
 let myLibrary = [];
 let newBook;
 
@@ -14,10 +19,10 @@ function handleClicks() {
 handleClicks();
 
 function Books(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+    this.title = bookTitle.value;
+    this.author = bookAuthor.value;
+    this.pages = bookPages.value;
+    this.read = bookRead.checked;
 }
 
 Books.prototype.info = function() {
@@ -25,10 +30,18 @@ Books.prototype.info = function() {
 }
 
 function addBooks() {
-    popUp.style.display = 'none';
-
     newBook = new Books(title, author, pages, read);
     myLibrary.push(newBook);
+    
+    resetForm();
+    popUp.style.display = 'none';
+}
+
+function resetForm() {
+    bookTitle.textContent = '';
+    bookAuthor.textContent = '';
+    bookPages.textContent = '';
+    bookRead.value = 'unchecked';
 }
 
 function render() {
@@ -84,3 +97,5 @@ function createBook(item) {
         render();
     })
 }
+
+render();
