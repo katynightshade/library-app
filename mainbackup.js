@@ -1,4 +1,8 @@
-/*Still having issues with getting added books to display, not sure what the problem is at this point */
+/*The form is providing input, but within the array the input just states the object constructor, like this: 
+>myLibrary
+>[Books]
+    >0: Books {title: undefined, author:undefined, pages: undefined, read: undefined}
+*/
 
 let myLibrary = [];
 
