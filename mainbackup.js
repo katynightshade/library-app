@@ -29,6 +29,10 @@ function addBooks(title, author, pages, read) {
 }
 
 function render() {
+    const display = document.getElementById('library-div');
+    const books = document.querySelectorAll('.book');
+    books.forEach((book) => display.removeChild(book));
+
     for (let i = 0; i < myLibrary.length; i++) {
         createBook(myLibrary[i]);
     }
