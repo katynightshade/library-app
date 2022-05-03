@@ -1,3 +1,5 @@
+/*Form action may not be the problem, may be the link between the form data and JS. Website automatically loads with the read/remove buttons, remove and read buttons function as expected, but other form data is not populating. Directing the form to itself seems like it might work */
+
 const popUp = document.getElementById('pop-up');
 const addBtn = document.getElementById('add-btn');
 const newBookBtn = document.getElementById('new-btn');
@@ -67,12 +69,15 @@ function createBook(item) {
 
     titleDiv.textContent = item.title;
     titleDiv.classList.add('title');
+    bookDiv.appendChild(titleDiv);
 
     authorDiv.textContent = item.author;
     authorDiv.classList.add('author');
+    bookDiv.appendChild(authorDiv);
 
     pageDiv.textContent = item.pages;
     pageDiv.classList.add('pages');
+    bookDiv.appendChild(pageDiv);
 
     readBtn.classList.add('read');
     if (item.read == false) {
@@ -80,11 +85,12 @@ function createBook(item) {
     } else {
         readBtn.textContent = 'Read';
     }
+    bookDiv.appendChild(readBtn);
 
     removeBtn.textContent = 'Remove';
     removeBtn.setAttribute('id', 'removeBtn');
+    bookDiv.appendChild(removeBtn);
     
-    bookDiv.append(titleDiv, authorDiv, pageDiv, removeBtn, readBtn);
     libraryDiv.appendChild(bookDiv);
 
     removeBtn.addEventListener('click', () => {
