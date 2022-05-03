@@ -1,4 +1,6 @@
 /*Form action may not be the problem, may be the link between the form data and JS. Website automatically loads with the read/remove buttons, remove and read buttons function as expected, but other form data is not populating. Directing the form to itself seems like it might work */
+/*Changed bookTtle, Author, Pages, and Read because the id's within the form were the same as what is being created below, this cause the remove and read buttons to disappear, still having issues with the connection between the form data and the JS */
+/*Issue may be the render function or the Books object constructor. */
 
 const popUp = document.getElementById('pop-up');
 const addBtn = document.getElementById('add-btn');
@@ -6,10 +8,10 @@ const newBookBtn = document.getElementById('new-btn');
 const libraryDiv = document.querySelector('.library-div');
 const closeBtn = document.querySelector('.close');
 const bookForm = document.getElementById('book-form');
-const bookTitle = document.getElementById('title');
-const bookAuthor = document.getElementById('author');
-const bookPages = document.getElementById('pages');
-const bookRead = document.getElementById('read');
+const bookTitle = document.getElementById('formtitle');
+const bookAuthor = document.getElementById('formauthor');
+const bookPages = document.getElementById('formpages');
+const bookRead = document.getElementById('formread');
 let myLibrary = [];
 let newBook;
 
@@ -21,10 +23,10 @@ function handleClicks() {
 handleClicks();
 
 function Books(title, author, pages, read) {
-    this.title = bookTitle.value;
-    this.author = bookAuthor.value;
-    this.pages = bookPages.value;
-    this.read = bookRead.checked;
+    this.title = title.value;
+    this.author = author.value;
+    this.pages = pages.value;
+    this.read = read.checked;
 }
 
 Books.prototype.info = function() {
@@ -48,7 +50,7 @@ function resetForm() {
 
 function render() {
     const books = document.querySelectorAll('.book');
-    books.forEach(book => libraryDiv.removeChild(book));
+    books.forEach(book => libraryDiv.appendChild(book));
 
     for (let i = 0; i < myLibrary.length; i++) {
         createBook(myLibrary[i]);
