@@ -3,6 +3,7 @@
 >[Books]
     >0: Books {title: undefined, author:undefined, pages: undefined, read: undefined}
 */
+/*Maybe still an issue with object constructor? or the addBooks function? */
 
 let myLibrary = [];
 
