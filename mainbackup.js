@@ -1,5 +1,7 @@
+/*Still the same issue with the array only displaying the object constructor. it is not receiving input, but is instead automatically loading with the object constructor in the array. */
+
 //array for compilation of books
-let myLibrary = [];
+let myLibrary = ['the hobbit, jrrtolkien, 307 pages', 'hpsix, jk rowling, 564 pages'];
 
 //giving direction to the form's submit button
 const addBtn = document.getElementById('add-btn');
@@ -91,3 +93,5 @@ function validateForm() {
     const read = document.getElementById('formread').checked;
     return new Books(title, author, pages, read);
 }
+
+render();
