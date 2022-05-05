@@ -1,20 +1,9 @@
-/*The form is providing input, but within the array the input just states the object constructor, like this: 
->myLibrary
->[Books]
-    >0: Books {title: undefined, author:undefined, pages: undefined, read: undefined}
-*/
-/*Maybe still an issue with object constructor? or the addBooks function? */
-
 let myLibrary = [];
 
 const addBtn = document.getElementById('add-btn');
 addBtn.addEventListener('click', addBooks());
 
 const newBookBtn = document.getElementById('new-btn');
-/*const title = document.getElementById('formtitle');
-const author = document.getElementById('formauthor');
-const pages = document.getElementById('formpages');
-const read = document.getElementById('formread');*/
 
 function Books(title, author, pages, read) {
     this.title = title;
@@ -23,9 +12,8 @@ function Books(title, author, pages, read) {
     this.read = read;
 }
 
-function addBooks(title, author, pages, read) {
-    let newBook = new Books(title, author, pages, read);
-    myLibrary.push(newBook);
+function addBooks() {
+    myLibrary.push(validateForm());
     render();
 }
 
@@ -89,18 +77,9 @@ function createBook(item) {
 
 function validateForm(event) {
     const form = document.getElementById('book-form');
-    const title = document.getElementById('formtitle');
-    const author = document.getElementById('formauthor');
-    const pages = document.getElementById('formpages');
-    const read = document.getElementById('formread');
-    if (title.value !== '' && author.value !== '' && pages.value !== '') {
-        if (read.checked) {
-            addBooks(title.value, author.value, pages.value, true);
-        } else {
-            addBooks(title.value, author.value, pages.value, false);
-        };
-    };
-    form.reset();
+    const title = document.getElementById('formtitle').value;
+    const author = document.getElementById('formauthor').value;
+    const pages = document.getElementById('formpages').value;
+    const read = document.getElementById('formread').checked;
+    return new Books(title, author, pages, read);
 }
-
-validateForm();
