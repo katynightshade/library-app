@@ -16,23 +16,30 @@
 
     <div id="pop-up">
         <form id="book-form">
-            <span class="close">&times;</span>
             <h3>Add New Book</h3>
-            <label for="title">Title</label>
-            <input type="text" id="formtitle" name="title">
-            <label for="author">Author</label>
-            <input type="text" id="formauthor" name="author">
-            <label for="pages">Number of Pages</label>
-            <input type="text" id="formpages" name="pages">
-            <input type='checkbox' id='formread' name='read' value='yes'>
-            <label>Read:</label>
+            <div class="title">
+                <label for="title">Title</label>
+                <input type="text" id="formtitle" name="title">
+            </div>
+            <div class="author">
+                <label for="author">Author</label>
+                <input type="text" id="formauthor" name="author">
+            </div>
+            <div class="pages">
+                <label for="pages" class="pages">Number of Pages</label>
+                <input type="text" class="pages" id="formpages" name="pages">
+            </div>
+            <div class="read">
+                <input type="checkbox" class="read" id="formread" name="read" value="yes">
+                <label class="read" for="read">Read</label>
+            </div>
             <button type="submit" id="add-btn">Submit</button>
         </form>
     </div>
 
     <div id="library-div">
         <h3>Library List</h3>
-
+        <div class="cards"></div>
     </div>
 
     <script src="mainbackup.js"></script>

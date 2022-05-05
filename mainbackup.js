@@ -37,7 +37,7 @@ function render() {
 
 //creates book cards for library
 function createBook(item) {
-    const libraryDiv = document.getElementById('library-div');
+    const cardDiv = document.querySelector('.cards');
     const bookDiv = document.createElement('div');
     const titleDiv = document.createElement('div');
     const authorDiv = document.createElement('div');
@@ -72,7 +72,7 @@ function createBook(item) {
     removeBtn.setAttribute('id', 'removeBtn');
     bookDiv.appendChild(removeBtn);
 
-    libraryDiv.appendChild(bookDiv);
+    cardDiv.appendChild(bookDiv);
 
     removeBtn.addEventListener('click', () => {
         myLibrary.splice(myLibrary.indexOf(item), 1);

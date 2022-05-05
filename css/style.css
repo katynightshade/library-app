@@ -8,21 +8,50 @@ html, body {
 body {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 20vh 40vh 40vh;
+    grid-template-rows: 14vh 43vh 43vh;
 }
 
 h1 {
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #new-btndiv {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
 
+#new-btn {
+    grid-area: 1 / 3 / 2 / 4;
 }
 
 #pop-up {
     grid-area: 2 / 1 / 3 / 3;
 }
 
+#book-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+#book-form > h3 {
+    grid-area: 1 / 1 / 2 / 3;
+}
+
+#add-btn {
+    grid-area: 4 / 1 / 5 / 3;
+}
+
 #library-div {
     grid-area: 3 / 1 / 4 / 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(100px, auto);
 }
