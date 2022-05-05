@@ -1,10 +1,14 @@
+//array for compilation of books
 let myLibrary = [];
 
+//giving direction to the form's submit button
 const addBtn = document.getElementById('add-btn');
 addBtn.addEventListener('click', addBooks());
 
+//to allow for pop-up form to add books
 const newBookBtn = document.getElementById('new-btn');
 
+//object contructor to create books
 function Books(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -12,11 +16,13 @@ function Books(title, author, pages, read) {
     this.read = read;
 }
 
+//push books to library array and display in UI
 function addBooks() {
     myLibrary.push(validateForm());
     render();
 }
 
+//display book cards
 function render() {
     const display = document.getElementById('library-div');
     const books = document.querySelectorAll('.book');
@@ -27,6 +33,7 @@ function render() {
     }
 }
 
+//creates book cards for library
 function createBook(item) {
     const libraryDiv = document.getElementById('library-div');
     const bookDiv = document.createElement('div');
@@ -37,6 +44,7 @@ function createBook(item) {
     const readBtn = document.createElement('button');
 
     bookDiv.classList.add('book');
+    bookDiv.setAttribute('id', myLibrary.indexOf(item));
 
     titleDiv.textContent = item.title;
     titleDiv.classList.add('title');
@@ -75,8 +83,8 @@ function createBook(item) {
     });
 }
 
-function validateForm(event) {
-    const form = document.getElementById('book-form');
+//to retrieve the input from the form
+function validateForm() {
     const title = document.getElementById('formtitle').value;
     const author = document.getElementById('formauthor').value;
     const pages = document.getElementById('formpages').value;
