@@ -1,15 +1,8 @@
-/*Display issues: in render(), display.removeChild causes DOMException error, display.apendChild causes enitre library to be appended every time. */
-
-//array for compilation of books
 let myLibrary = [];
 
 function handleClicks() {
     let form = document.getElementById('book-form');
     let addBtn = document.getElementById('add-btn');
-    addBtn.addEventListener('click', () => {
-        addBooks();
-        form.reset();
-    });
     const popUp = document.getElementById('pop-up');
     const libraryDiv = document.getElementById('library-div');
     const newBtn = document.getElementById('new-btn');
@@ -18,10 +11,20 @@ function handleClicks() {
         popUp.style.gridArea = '2 / 1 / 3 / 3';
         libraryDiv.style.gridArea = '3 / 1 / 4 / 3';
     });
+    addBtn.addEventListener('click', () => {
+        addBooks();
+        form.reset();
+        popUp.style.display = 'none';
+        libraryDiv.style.gridArea = '2 / 1 / 3 / 3';
+    });
+    const closeBtn = document.getElementById('close');
+    closeBtn.addEventListener('click', () => {
+        popUp.style.display = 'none';
+        libraryDiv.style.gridArea = '2 / 1 / 3 / 3';
+    });
 }
 handleClicks();
 
-//object contructor to create books
 function Books(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -29,14 +32,13 @@ function Books(title, author, pages, read) {
     this.read = read;
 }
 
-//push books to library array and display in UI
 function addBooks() {
     const title = document.getElementById('formtitle').value;
     const author = document.getElementById('formauthor').value;
     const pages = document.getElementById('formpages').value;
     const read = document.getElementById('formread').checked;
     let newBook = new Books(title, author, pages, read);
-    if (title.value !== '' && author.value !== '' && pages.value > 10,000) {
+    if (title.value !== '' && author.value !== '' && pages.value !== '') {
         myLibrary.push(newBook);
         render();
     } else {
@@ -44,11 +46,11 @@ function addBooks() {
     }
 }
 
-//display book cards
+/*display.appendChild returning Uncaught TypeError, "parameter 1 is not of type node" */
 function render() {
     const display = document.getElementById('library-div');
     const books = document.querySelectorAll('.book');
-    books.forEach((book) => display.appendChild(book));
+    books.forEach((book) => display.appendChild(myLibrary.indexOf(book)));
 
     for (let i = 0; i < myLibrary.length; i++) {
         createBook(myLibrary[i]);
