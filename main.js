@@ -3,13 +3,23 @@
 //array for compilation of books
 let myLibrary = [];
 
-//button event listener
-let form = document.getElementById('book-form');
-let addBtn = document.getElementById('add-btn');
-addBtn.addEventListener('click', () => {
-    addBooks();
-    form.reset();
-});
+function handleClicks() {
+    let form = document.getElementById('book-form');
+    let addBtn = document.getElementById('add-btn');
+    addBtn.addEventListener('click', () => {
+        addBooks();
+        form.reset();
+    });
+    const popUp = document.getElementById('pop-up');
+    const libraryDiv = document.getElementById('library-div');
+    const newBtn = document.getElementById('new-btn');
+    newBtn.addEventListener('click', () => {
+        popUp.style.display = 'block';
+        popUp.style.gridArea = '2 / 1 / 3 / 3';
+        libraryDiv.style.gridArea = '3 / 1 / 4 / 3';
+    });
+}
+handleClicks();
 
 //object contructor to create books
 function Books(title, author, pages, read) {
@@ -26,11 +36,11 @@ function addBooks() {
     const pages = document.getElementById('formpages').value;
     const read = document.getElementById('formread').checked;
     let newBook = new Books(title, author, pages, read);
-    if (title.value !== '' && author.value !== '' && pages.value !== '') {
+    if (title.value !== '' && author.value !== '' && pages.value > 10,000) {
         myLibrary.push(newBook);
         render();
     } else {
-        window.alert('Please enter a number less than 10,000. Numbers only. No special characters.'); 
+        window.alert('Please fill out form.'); 
     }
 }
 
