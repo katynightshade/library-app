@@ -1,3 +1,5 @@
+/*Display issues: in render(), display.removeChild causes DOMException error, display.apendChild causes enitre library to be appended every time. */
+
 //array for compilation of books
 let myLibrary = [];
 
@@ -24,15 +26,19 @@ function addBooks() {
     const pages = document.getElementById('formpages').value;
     const read = document.getElementById('formread').checked;
     let newBook = new Books(title, author, pages, read);
-    myLibrary.push(newBook);
-    render();
+    if (title.value !== '' && author.value !== '' && pages.value !== '') {
+        myLibrary.push(newBook);
+        render();
+    } else {
+        window.alert('Please enter a number less than 10,000. Numbers only. No special characters.'); 
+    }
 }
 
 //display book cards
 function render() {
     const display = document.getElementById('library-div');
     const books = document.querySelectorAll('.book');
-    books.forEach((book) => display.removeChild(book));
+    books.forEach((book) => display.appendChild(book));
 
     for (let i = 0; i < myLibrary.length; i++) {
         createBook(myLibrary[i]);
