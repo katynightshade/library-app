@@ -6,6 +6,7 @@ function handleClicks() {
     const popUp = document.getElementById('pop-up');
     const libraryDiv = document.getElementById('library-div');
     const newBtn = document.getElementById('new-btn');
+    const libraryHead = document.getElementById('libraryhead');
     newBtn.addEventListener('click', () => {
         popUp.style.display = 'block';
         popUp.style.gridArea = '2 / 1 / 3 / 3';
@@ -15,12 +16,13 @@ function handleClicks() {
         addBooks();
         form.reset();
         popUp.style.display = 'none';
-        libraryDiv.style.gridArea = '2 / 1 / 3 / 3';
+        libraryDiv.style.gridArea = '2 / 1 / 4 / 3';
+        libraryHead.style.padding = '10px 0 0 0'
     });
     const closeBtn = document.getElementById('close');
     closeBtn.addEventListener('click', () => {
         popUp.style.display = 'none';
-        libraryDiv.style.gridArea = '2 / 1 / 3 / 3';
+        libraryDiv.style.gridArea = '2 / 1 / 4 / 3';
     });
 }
 handleClicks();
@@ -61,6 +63,7 @@ function createBook(item) {
     const titleDiv = document.createElement('div');
     const authorDiv = document.createElement('div');
     const pageDiv = document.createElement('div');
+    const btnDiv = document.createElement('div');
     const removeBtn = document.createElement('button');
     const readBtn = document.createElement('button');
 
@@ -72,12 +75,15 @@ function createBook(item) {
     bookDiv.appendChild(titleDiv);
 
     authorDiv.textContent = item.author;
-    titleDiv.classList.add('author');
+    authorDiv.classList.add('author');
     bookDiv.appendChild(authorDiv);
 
-    pageDiv.textContent = item.pages;
+    pageDiv.textContent = `${item.pages} pages`;
     pageDiv.classList.add('pages');
     bookDiv.appendChild(pageDiv);
+
+    btnDiv.classList.add('librarybtns');
+    bookDiv.appendChild(btnDiv);
 
     readBtn.classList.add('read');
     if (item.read == false) {
@@ -85,11 +91,11 @@ function createBook(item) {
     } else {
         readBtn.textContent = 'Read';
     }
-    bookDiv.appendChild(readBtn);
+    btnDiv.appendChild(readBtn);
 
     removeBtn.textContent = 'Remove';
     removeBtn.setAttribute('id', 'removeBtn');
-    bookDiv.appendChild(removeBtn);
+    btnDiv.appendChild(removeBtn);
 
     cardDiv.appendChild(bookDiv);
 

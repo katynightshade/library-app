@@ -8,40 +8,52 @@
     <title>My Library</title>
 </head>
 <body>
-    <h1>My Library</h1>
+    <div class="header">
+        <h1>My Library</h1>
 
-    <div id="new-btndiv">
-        <button id="new-btn">New Book</button>
+        <div id="new-btndiv">
+            <button id="new-btn">New Book</button>
+        </div>
     </div>
 
     <div id="pop-up">
         <form id="book-form">
-            <span id="close"><img src="img/close.png" alt="Close Form"></span>
-            <h3>Add New Book</h3>
-            <div class="title">
-                <label for="title">Title</label>
+            <div class="form-head">
+                <span id="close"><img src="img/close.png" alt="Close Form"></span>
+                <h3>Add New Book</h3>
+            </div>
+            <div class="titlediv">
+                <label for="formtitle">Title</label>
                 <input type="text" id="formtitle" name="title">
             </div>
-            <div class="author">
-                <label for="author">Author</label>
+            <div class="authordiv">
+                <label for="formauthor">Author</label>
                 <input type="text" id="formauthor" name="author">
             </div>
-            <div class="pages">
-                <label for="pages" class="pages">Number of Pages</label>
+            <div class="pagesdiv">
+                <label for="formpages">Number of Pages</label>
                 <input type="number" class="pages" id="formpages" max="10000" name="pages">
             </div>
-            <div class="read">
+            <div class="readdiv">
                 <input type="checkbox" class="read" id="formread" name="read" value="yes">
-                <label class="read" for="read">Read</label>
+                <label class="read" for="formread">Read</label>
             </div>
-            <button type="button" id="add-btn">Submit</button>
-            <button type="reset">Reset</button>
+            <div class="formbuttons">
+                <button type="button" id="add-btn">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
         </form>
     </div>
 
     <div id="library-div">
-        <h3>Library List</h3>
+        <h3 id="libraryhead">Library List</h3>
         <div class="cards"></div>
+    </div>
+
+    <div class="footer">
+        <p>Background Art by Fiona Art on Pexels</p>
+        <p>Katy Nightshade</p>
+        <p><a href="https://github.com/katynightshade/library-app">Source Code</a></p>
     </div>
 
     <script src="main.js"></script>
