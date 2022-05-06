@@ -38,7 +38,7 @@ function addBooks() {
     const pages = document.getElementById('formpages').value;
     const read = document.getElementById('formread').checked;
     let newBook = new Books(title, author, pages, read);
-    if (title.value !== '' && author.value !== '' && pages.value !== '') {
+    if (title !== '' && author !== '' && pages !== '') {
         myLibrary.push(newBook);
         render();
     } else {
@@ -46,18 +46,15 @@ function addBooks() {
     }
 }
 
-/*display.appendChild returning Uncaught TypeError, "parameter 1 is not of type node" */
 function render() {
-    const display = document.getElementById('library-div');
+    const display = document.querySelector('.cards');
     const books = document.querySelectorAll('.book');
-    books.forEach((book) => display.appendChild(myLibrary.indexOf(book)));
-
+    books.forEach((book) => display.removeChild(book));
     for (let i = 0; i < myLibrary.length; i++) {
         createBook(myLibrary[i]);
     }
 }
 
-//creates book cards for library
 function createBook(item) {
     const cardDiv = document.querySelector('.cards');
     const bookDiv = document.createElement('div');
@@ -106,5 +103,3 @@ function createBook(item) {
         render();
     });
 }
-
-render();

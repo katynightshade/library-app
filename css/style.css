@@ -9,6 +9,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 14vh 43vh 43vh;
+    background-color: rgb(221, 228, 235);
 }
 
 h1 {
