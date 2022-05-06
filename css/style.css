@@ -15,7 +15,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 14vh 43vh 33vh 10vh;
-    background-image: url(/img/background.jpg);
+    background-image: url(../img/background.jpg);
     background-size: 100vw;
     font-family: 'Koulen', sans-serif;
 }
