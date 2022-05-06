@@ -1,14 +1,13 @@
-/*Still the same issue with the array only displaying the object constructor. it is not receiving input, but is instead automatically loading with the object constructor in the array. */
-
 //array for compilation of books
-let myLibrary = ['the hobbit, jrrtolkien, 307 pages', 'hpsix, jk rowling, 564 pages'];
+let myLibrary = [];
 
-//giving direction to the form's submit button
-const addBtn = document.getElementById('add-btn');
-addBtn.addEventListener('click', addBooks());
-
-//to allow for pop-up form to add books
-const newBookBtn = document.getElementById('new-btn');
+//button event listener
+let form = document.getElementById('book-form');
+let addBtn = document.getElementById('add-btn');
+addBtn.addEventListener('click', () => {
+    addBooks();
+    form.reset();
+});
 
 //object contructor to create books
 function Books(title, author, pages, read) {
@@ -20,7 +19,12 @@ function Books(title, author, pages, read) {
 
 //push books to library array and display in UI
 function addBooks() {
-    myLibrary.push(validateForm());
+    const title = document.getElementById('formtitle').value;
+    const author = document.getElementById('formauthor').value;
+    const pages = document.getElementById('formpages').value;
+    const read = document.getElementById('formread').checked;
+    let newBook = new Books(title, author, pages, read);
+    myLibrary.push(newBook);
     render();
 }
 
@@ -83,15 +87,6 @@ function createBook(item) {
         item.read = !item.read;
         render();
     });
-}
-
-//to retrieve the input from the form
-function validateForm() {
-    const title = document.getElementById('formtitle').value;
-    const author = document.getElementById('formauthor').value;
-    const pages = document.getElementById('formpages').value;
-    const read = document.getElementById('formread').checked;
-    return new Books(title, author, pages, read);
 }
 
 render();
