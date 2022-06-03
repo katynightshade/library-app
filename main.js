@@ -1,5 +1,14 @@
 let myLibrary = [];
 
+class Books {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+}
+
 function handleClicks() {
     let form = document.getElementById('book-form');
     let addBtn = document.getElementById('add-btn');
@@ -26,13 +35,6 @@ function handleClicks() {
     });
 }
 handleClicks();
-
-function Books(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
 
 function addBooks() {
     const title = document.getElementById('formtitle').value;
